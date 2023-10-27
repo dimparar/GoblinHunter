@@ -9,7 +9,7 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
 {
     public enum PlayerAnimation
     {
-        IDLE, EQUIP, UNEQUIP, ATTACK
+        IDLE, EQUIP, UNEQUIP, ATTACK, HIT
     }
 
     void InitStates()
@@ -18,6 +18,7 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
         States.Add(PlayerAnimation.EQUIP, new EquipState());
         States.Add(PlayerAnimation.UNEQUIP, new UnequipState());
         States.Add(PlayerAnimation.ATTACK, new AttackState());
+        States.Add(PlayerAnimation.HIT, new HitState());
     }
 
     private void Awake()
@@ -26,6 +27,7 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
         CurrentState = States[PlayerAnimation.IDLE];
         EventManager.AttackEvent += Attack;
         EventManager.EquipWeaponEvent += Equip;
+        EventManager.PlayerHitEvent += GetHit;
     }
 
     private void Attack() 
@@ -44,4 +46,8 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
         }
     }
 
+    private void GetHit() 
+    {
+        TransitionToState(PlayerAnimation.HIT);
+    }
 }

@@ -22,6 +22,7 @@ public class PlayerInteract : MonoBehaviour
     private OutlineEffect outline;
     private OutlineEffect3D outline3D;
 
+    Hittable hitTarget;
     private void Awake()
     {
         _playerUI = GetComponent<PlayerUI>();
@@ -123,8 +124,13 @@ public class PlayerInteract : MonoBehaviour
                         Hittable hittable = hitInfo.collider.GetComponent<Hittable>();
 
                         // Player UI Update
+
                         //_playerUI.crosshairInteraction();
-                        hittable.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
+                        //hittable.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
+
+                        _playerUI.crosshairInteraction();
+                        hitTarget = hittable;
+                        Invoke("InvokeEnemyHit", WeaponManager._currentWeapon.GetTimeTillHit());
                     }
                 }
                 else
@@ -164,8 +170,10 @@ public class PlayerInteract : MonoBehaviour
 
 
     }
-
-
+    public void InvokeEnemyHit() 
+    {
+        EventManager.EnemyHitPerformed(hitTarget);
+    }
 
 }
 

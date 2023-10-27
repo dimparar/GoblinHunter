@@ -17,6 +17,8 @@ public abstract class Weapon
     protected float staminaConsumption;
 
     protected float weaponRange;
+    
+    protected float timeTillHit;
     protected Weapon()
     {
 
@@ -38,6 +40,11 @@ public abstract class Weapon
     public float GetWeaponRange()
     {
         return weaponRange;
+    }
+
+    public float GetTimeTillHit() 
+    {
+        return timeTillHit;
     }
     public abstract PlayerWeapon getWeapon();
 

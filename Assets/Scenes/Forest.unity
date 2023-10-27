@@ -2267,6 +2267,11 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &939230233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7090264968204897557, guid: 338f6e8c9e67dd84c9220626a6b423e5, type: 3}
+  m_PrefabInstance: {fileID: 7809712210091876713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &986426980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7226438971040100337, guid: c9925ef981356bf42b655ad4e265bc72, type: 3}
@@ -9513,6 +9518,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38340a526bf16794f867f1f583b833cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1558739490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558739448}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be087c84ff34ea4498e4a3621140585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1606825134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12474,6 +12491,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1557560069566293772, guid: 338f6e8c9e67dd84c9220626a6b423e5, type: 3}
+      propertyPath: Parent
+      value: 
+      objectReference: {fileID: 939230233}
+    - target: {fileID: 1557560069566293772, guid: 338f6e8c9e67dd84c9220626a6b423e5, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 921934324}
@@ -12493,6 +12514,9 @@ PrefabInstance:
       propertyPath: healthCanvas
       value: 
       objectReference: {fileID: 1755815984}
+      propertyPath: deathScreen
+      value: 
+      objectReference: {fileID: 3528023692326069211, guid: c5cca35653eb6e642b143a18389da107, type: 3}
     - target: {fileID: 1557560069566293772, guid: 338f6e8c9e67dd84c9220626a6b423e5, type: 3}
       propertyPath: healthSlider
       value: 
@@ -12599,6 +12623,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8350341196549460101, guid: 338f6e8c9e67dd84c9220626a6b423e5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1462409692}
+    - targetCorrespondingSourceObject: {fileID: 5614196621514171084, guid: 338f6e8c9e67dd84c9220626a6b423e5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1558739490}
   m_SourcePrefab: {fileID: 100100000, guid: 338f6e8c9e67dd84c9220626a6b423e5, type: 3}
 --- !u!4 &7809712210091876714 stripped
 Transform:

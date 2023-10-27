@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour, Hittable
 
     public void InitEnemy()
     {
-        health = 90;
+        health = 100;
         damage = 3;
     }
 
@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour, Hittable
     {
         if (health > amount)
         {
-            Debug.Log("Health Before: " + health);
             health -= amount;
         }
         else
@@ -30,6 +29,7 @@ public class EnemyController : MonoBehaviour, Hittable
 
     void Start()
     {
+        
     }
 
     void Update()

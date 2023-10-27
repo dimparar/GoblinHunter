@@ -15,23 +15,23 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private VisualEffect healthVFX;
     [SerializeField] private VisualEffect healthVFX_0;
     [SerializeField] private Image healthRadialFX;
+    [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject Parent;
 
     private void Awake()
     {
         healthRadialFX.enabled = false;
     }
 
+    private void OnEnable()
+    {
+        EventManager.PlayerDeathEvent += ShowDeathScreen;
+    }
     private void Start()
     {
-        
         StopHealthAnimation();
-
         healthBar.value = 100;
         staminaBar.value = 50;
-    }
-
-    void UpdateHealth() 
-    {
     }
 
     void Update()
@@ -71,5 +71,13 @@ public class PlayerUI : MonoBehaviour
         healthVFX_0.Stop();
     }
 
+
+
+    public void ShowDeathScreen() 
+    {
+       GameObject deathScreenObject = Instantiate(deathScreen);
+       deathScreenObject.transform.SetParent(Parent.transform);
+       deathScreenObject.transform.localPosition = new Vector3(0, 0, 0);
+    }
 
 }

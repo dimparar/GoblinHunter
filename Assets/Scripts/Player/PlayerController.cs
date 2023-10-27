@@ -111,11 +111,12 @@ public class PlayerController : MonoBehaviour, Hittable
         {
             Debug.Log("Health Before: " + health);
             health -= amount*defense;
+            EventManager.PlayerTakeHit();
         }
         else
         {
             health = 0;
-            //death
+            EventManager.PlayerDeath();
         }
         Debug.Log("Health After: " + health);
     }

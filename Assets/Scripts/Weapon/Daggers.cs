@@ -9,6 +9,7 @@ public class Daggers : Weapon
         weaponDamage = 20f;
         staminaConsumption = 7f;
         weaponRange = 2f;
+        timeTillHit = 0.332f;
         IDLE = new AnimationClip(Animator.StringToHash("IdleDaggers"), 0f);
         EQUIP = new AnimationClip(Animator.StringToHash("EquipDaggers"), 0.43f);
         UNEQUIP = new AnimationClip(Animator.StringToHash("UnequipDaggers"), 0.43f);
