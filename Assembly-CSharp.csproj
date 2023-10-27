@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Weapon\Daggers.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\IdleEnemyState.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyStates\PatrolEnemyState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerRotateSmooth.cs" />
     <Compile Include="Assets\Scripts\Weapon\Hands.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerRotate.cs" />
@@ -92,11 +93,11 @@
     <Compile Include="Assets\Scripts\Animation\PlayerStates\EquipState.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\IdleState.cs" />
     <Compile Include="Assets\Scripts\OutllneEffect.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyStates\ChaseEnemyState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationFSM.cs" />
     <Compile Include="Assets\Scripts\Animation\BaseAnimationState.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimationAspectManager.cs" />
     <Compile Include="Assets\Input\PlayerInput.cs" />
-    <Compile Include="Assets\Scripts\Enemies\EnemyStates\PatrolState.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
     <Compile Include="Assets\Scripts\Enemies\Path.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\AttackEnemyState.cs" />

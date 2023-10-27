@@ -63,6 +63,7 @@ public class IdleEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimatio
             //Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
             ChangeAnimation(AspectManager._currentAspectKey);
             AspectManager._changeAspect = true;
+
         }
 
     }

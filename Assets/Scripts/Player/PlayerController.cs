@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour, Hittable
     public PlayerInput _playerInput;
     public PlayerInput.OnFootActions _onFoot;
 
-
-
     public void Awake()
     {
         _player = GetComponent<CharacterController>();

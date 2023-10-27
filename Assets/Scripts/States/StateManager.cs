@@ -33,7 +33,6 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
 
             }
         }
-
     }
 
     void TransitionToState(EState stateKey)
@@ -44,8 +43,6 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
         CurrentState.EnterState();
         isTransitionState = false;
     }
-
-
 
     void OnTriggerEnter(Collider other)
     {
@@ -61,9 +58,4 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
     {
         CurrentState.OnTriggerExit(other);  
     }
-
-
-
-
-
 }
