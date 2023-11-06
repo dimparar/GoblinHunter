@@ -15,7 +15,12 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 
     private SpriteBillboard billboard;
     private EnemyController controller;
-
+    private bool _isAttacking = false;
+    public bool isAttacking
+    {
+        get => _isAttacking;
+        set => _isAttacking = value;
+    }
     private NavMeshAgent agent;
     public NavMeshAgent Agent { get => agent; }
     public GameObject Player;
@@ -23,8 +28,8 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 
     void InitStates()
     {
-        States.Add(EnemyState.ATTACK, new AttackEnemyState());
-        States.Add(EnemyState.PATROL, new PatrolState(this));
+        States.Add(EnemyState.ATTACK, new AttackEnemyState(this));
+        States.Add(EnemyState.PATROL, new PatrolEnemyState(this));
         States.Add(EnemyState.CHASE, new ChaseEnemyState(this));
         States.Add(EnemyState.DEAD, new DeathEnemyState());
     }
@@ -65,8 +70,8 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         // Draw a wireframe sphere to represent the detection radius in the Unity editor
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 5f);
-        //Gizmos.color = Color.yellow;
-        //Gizmos.DrawWireSphere(new Vector3(2.31365466f, 1.338305f, -38.7388077f), 10f);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(PatrolEnemyState.nextWaypoint, 1f);
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, 7f);
     }
@@ -78,9 +83,14 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
 
         foreach (Collider hit in hits)
         {
-            if (hit.CompareTag("Player"))
+            Vector3 playerPosition = hit.transform.position;
+
+            // Check if the player's position is on the NavMesh: 2f is enough distance but we have a problem when the player is out of bounds
+            NavMeshHit navHit;
+            if (NavMesh.SamplePosition(playerPosition, out navHit, 2f, NavMesh.AllAreas) && hit.CompareTag("Player"))
             {
-                // An object with the playerTag is inside the detection radius
+                // The player is on the NavMesh, you can proceed with your logic here
+                // For example, trigger an event, follow the player, etc.
                 return true;
             }
         }
@@ -92,5 +102,19 @@ public class EnemyStateMachine : StateManager<EnemyStateMachine.EnemyState>
         TransitionToState(EnemyState.DEAD);
         TerminateFSM = true;
         billboard.rotateYAxis = true;
+        // After he dies, just drop
+        agent.speed = 0;
+    }
+
+    public IEnumerator AttackAndWait()
+    {
+        isAttacking = true;
+        // Perform the attack action here (e.g., play animation, deal damage, etc.)
+        Debug.Log("Enemy is attacking!");
+
+        // Wait for the specified attack interval
+        yield return new WaitForSeconds(4f);
+
+        isAttacking = false;
     }
 }

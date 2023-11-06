@@ -6,6 +6,7 @@ public class ChaseEnemyState : BaseState<EnemyStateMachine.EnemyState>
 {
     private float chase_radius = 7f;
     private float speed = 1f;
+    private float combat_radius = 2f;
     private EnemyStateMachine _enemy;
     public ChaseEnemyState(EnemyStateMachine enemy, EnemyStateMachine.EnemyState key = EnemyStateMachine.EnemyState.CHASE) : base(key)
     {
@@ -23,11 +24,15 @@ public class ChaseEnemyState : BaseState<EnemyStateMachine.EnemyState>
 
     public override EnemyStateMachine.EnemyState GetNextState()
     {
+        if (_enemy.PlayerDetected(combat_radius))
+        {
+            return EnemyStateMachine.EnemyState.ATTACK;
+        }
         if (!_enemy.PlayerDetected(chase_radius))
         {
             return EnemyStateMachine.EnemyState.PATROL;
         }
-        // TODO: Attack range -> ATTACK_STATE 
+
         return EnemyStateMachine.EnemyState.CHASE;
     }
 
@@ -48,7 +53,9 @@ public class ChaseEnemyState : BaseState<EnemyStateMachine.EnemyState>
 
     public override void UpdateState()
     {
-        // Chase the player
+        /*        Debug.Log("Chase");
+        */        // Chase the player
+        _enemy.Agent.isStopped = false;
         _enemy.Agent.SetDestination(_enemy.Player.transform.position);
     }
 }
