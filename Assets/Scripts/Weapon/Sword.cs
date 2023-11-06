@@ -8,7 +8,7 @@ public class Sword : Weapon
     {
         weaponDamage = 25f;
         staminaConsumption = 10f;
-        weaponRange = 3f;
+        weaponRange = 5f;
         timeTillHit = 0.31f;
         IDLE = new AnimationClip(Animator.StringToHash("IdleSword"), 0f);
         EQUIP = new AnimationClip(Animator.StringToHash("EquipSword"), 0.43f);

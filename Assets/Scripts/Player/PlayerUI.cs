@@ -21,17 +21,16 @@ public class PlayerUI : MonoBehaviour
 
     private void Awake()
     {
-        healthRadialFX.enabled = false;
     }
 
     private void OnEnable()
     {
         EventManager.PlayerDeathEvent += ShowDeathScreen;
-        EventManager.PlayerHitEvent += ShowDamageAnimation;
+        EventManager.PlayerHitEvent += PlayDamageVfx;
     }
     private void Start()
     {
-        StopHealthAnimation();
+        /*StopHealthAnimation();*/
         healthBar.value = 100;
         staminaBar.value = 50;
     }
@@ -59,34 +58,28 @@ public class PlayerUI : MonoBehaviour
         _crosshair.color = Color.black;
     }
 
-    public void PlayHealthAnimation()
+    public void PlayHealthVFX()
     {
-        healthRadialFX.enabled = true;
-        //healthVFX.Play();
-        //healthVFX_0.Play();
+        StartCoroutine(Effects.StartFade(healthRadialFX, 0.5f, 1f));
+        Invoke("DisableHealthlVfx", 1f);
     }
 
-    public void StopHealthAnimation()
+    public void DisableHealthlVfx()
     {
-        healthRadialFX.enabled = false;
+        StartCoroutine(Effects.StartFade(healthRadialFX, 0.5f, 0f));
         healthVFX.Stop();
         healthVFX_0.Stop();
     }
-    private void DisableRadialVfx()
+    private void DisableDamageVfx()
     {
-        UnityEngine.Color color = damageRadialFX.color;
-        color.a = 0f;
-        damageRadialFX.color = color;
-        damageRadialFX.enabled = false;
+        StartCoroutine(Effects.StartFade(damageRadialFX, 0.5f, 0f));
     }
 
-    private void ShowDamageAnimation()
+
+    private void PlayDamageVfx()
     {
-        damageRadialFX.enabled = true;
-        UnityEngine.Color color = damageRadialFX.color;
-        color.a = 1f;
-        damageRadialFX.color = color;
-        Invoke("DisableRadialVfx", 2f);
+        StartCoroutine(Effects.StartFade(damageRadialFX, 0.5f, 1f));
+        Invoke("DisableDamageVfx", 1f);
     }
 
     public void ShowDeathScreen() 

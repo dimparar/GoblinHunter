@@ -9,11 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-<<<<<<< HEAD
-    <ProjectGuid>{33C41797-C4CC-AE9F-B515-3E0ACE18AABA}</ProjectGuid>
-=======
     <ProjectGuid>{EC68E461-7843-0965-FDC1-576106273058}</ProjectGuid>
->>>>>>> 7e39c34efdcfee075782c433bd3880495aafe3f6
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -63,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SpriteBillboard.cs" />
+    <Compile Include="Assets\Prefabs\VFX\Hit\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationFSM.cs" />
     <Compile Include="Assets\Scripts\Interactables\AxeInteractable.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\UnequipState.cs" />
@@ -107,6 +104,7 @@
     <Compile Include="Assets\Scripts\Animation\BaseAnimationState.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimationAspectManager.cs" />
     <Compile Include="Assets\Input\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Effect\Effects.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\HitState.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
     <Compile Include="Assets\Scripts\Enemies\Path.cs" />

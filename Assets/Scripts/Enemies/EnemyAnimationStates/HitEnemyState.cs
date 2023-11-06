@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -7,32 +8,18 @@ public class HitEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimation
 {
     private Dictionary<Aspects, AnimationClip> hitState = new Dictionary<Aspects, AnimationClip>();
 
-    private SpriteRenderer sprite;
-    private Transform enemyTransform;
     private float staggerTime;
     private float timer;
 
-    private bool flash;
 
-    private Material flashMaterial;
-    private Material originalMaterial;
     public HitEnemyState(AnimationAspectManager _aspectManager, EnemyAnimationFSM.EnemyAnimation key = EnemyAnimationFSM.EnemyAnimation.HIT)
         : base(key)
     {
         // TODO
         Id = 0;
 
-        //sprite renderer
-        sprite = _aspectManager.gameObject.GetComponentInChildren<SpriteRenderer>();
-        flashMaterial = Object.Instantiate(sprite.material);
-        Color currentColor = flashMaterial.color;
-        Color newColor = currentColor * 4;
-        flashMaterial.color = newColor;
-        originalMaterial = sprite.material;
-       
-        enemyTransform = _aspectManager.gameObject.GetComponent<Transform>();
+
         staggerTime = 0.5f;
-        flash = true;
         AspectManager = _aspectManager;
 
         hitState[Aspects.FRONT] = new AnimationClip(Animator.StringToHash("Idle"), 0f);
@@ -61,8 +48,6 @@ public class HitEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimation
             //Debug.Log("Change Aspect to " + AspectManager._currentAspectKey);
             ChangeAnimation(AspectManager._currentAspectKey);
         }
-
-        enemyTransform.Translate(100 * Time.deltaTime * -enemyTransform.forward, Space.World);
     }
 
     public override void UpdateState()
@@ -75,22 +60,11 @@ public class HitEnemyState : BaseAnimationState<EnemyAnimationFSM.EnemyAnimation
             AspectManager._changeAspect = true;
         }
 
-        if (flash)
-        {
-            sprite.material = flashMaterial;
-            flash = false;
-        }
-        else 
-        {
-            sprite.material = originalMaterial;
-            flash = true;
-        }
-
     }
 
     public override void ExitState()
     {
-        sprite.material = originalMaterial;
+        /*sprite.material = originalMaterial;*/
     }
 
     public override EnemyAnimationFSM.EnemyAnimation GetNextState()

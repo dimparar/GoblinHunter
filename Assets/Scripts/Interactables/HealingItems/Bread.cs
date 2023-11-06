@@ -22,7 +22,7 @@ public class Bread : Interactable
 
     public override void Interact()
     {
-        _playerUI.PlayHealthAnimation();
+        _playerUI.PlayHealthVFX();
 
         // Increase Health
 

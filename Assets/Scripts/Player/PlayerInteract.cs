@@ -23,6 +23,8 @@ public class PlayerInteract : MonoBehaviour
     private OutlineEffect3D outline3D;
 
     Hittable hitTarget;
+    Transform hittablePos;
+    GameObject target;
     private void Awake()
     {
         _playerUI = GetComponent<PlayerUI>();
@@ -121,7 +123,11 @@ public class PlayerInteract : MonoBehaviour
                     {
                         Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.cyan);
 
-                        Hittable hittable = hitInfo.collider.GetComponent<Hittable>();
+
+                        target = hitInfo.collider.gameObject;
+
+/*                        Hittable hittable = hitInfo.collider.GetComponent<Hittable>();
+                        Transform hittablePos = hitInfo.collider.GetComponent<Transform>();*/
 
                         // Player UI Update
 
@@ -129,7 +135,8 @@ public class PlayerInteract : MonoBehaviour
                         //hittable.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
 
                         _playerUI.crosshairInteraction();
-                        hitTarget = hittable;
+/*                        hitTarget = hittable;                        
+                        this.hittablePos = hittablePos;*/
                         Invoke("InvokeEnemyHit", WeaponManager._currentWeapon.GetTimeTillHit());
                     }
                 }
@@ -170,9 +177,11 @@ public class PlayerInteract : MonoBehaviour
 
 
     }
-    public void InvokeEnemyHit() 
+    public void InvokeEnemyHit()
     {
-        EventManager.EnemyHitPerformed(hitTarget);
+        StartCoroutine(Effects.Flash(target.GetComponentInChildren<SpriteRenderer>(), 0.5f));
+        gameObject.GetComponent<PlayerController>().PlayVFX(target.GetComponent<Transform>().TransformPoint(target.GetComponent<Transform>().localPosition));
+        EventManager.EnemyHitPerformed(target.GetComponent<Hittable>());
     }
 
 }
