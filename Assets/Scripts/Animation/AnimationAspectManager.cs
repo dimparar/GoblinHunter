@@ -16,6 +16,8 @@ public class AnimationAspectManager : MonoBehaviour
     private Vector3 _targetDir;
     private Transform _player;
 
+    public bool disableAspects = false;
+
     public float angle;
 
     private void Start()
@@ -40,6 +42,11 @@ public class AnimationAspectManager : MonoBehaviour
 
     public Aspects GetAspectFromAngle(float angle)
     {
+        if (disableAspects)
+        {
+            return Aspects.FRONT;
+        }
+
         if (angle > -22.5f && angle < 22.6f) return Aspects.FRONT;
         if (angle >= 22.5f && angle < 67.5f) return Aspects.LEFT_FRONT;
         if (angle >= 67.5f && angle < 112.5f) return Aspects.RIGHT;

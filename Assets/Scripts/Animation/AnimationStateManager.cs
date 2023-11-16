@@ -56,7 +56,6 @@ public abstract class AnimationStateManager<EState> : MonoBehaviour where EState
 
     protected void UpdateAnimation()
     {
-
         EState nextState = CurrentState.GetNextState();
 
         if (!isTransitionState)

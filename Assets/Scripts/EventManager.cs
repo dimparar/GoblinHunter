@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,34 +13,16 @@ public static class EventManager /*: MonoBehaviour*/
     
     public static event Action<Hittable> EnemyHitEvent;
 
-    public static event Action EnemyDeathEvent;
+    public static event Action<Hittable> EnemyDeathEvent;
 
-    public static event Action PlayerHitEvent;
+    public static event Action PlayerHitEffectEvent;
+    public static event Action<float> PlayerHitEvent;
 
     public static event Action PlayerDeathEvent;
 
     public static event Action EnemyAttackEvent;
 /*    public static event Action AttackWaitInAttackEnemy;
 */
-    public static event Action EnemyIdleEvent;
-    public static event Action EnemyWaitInIdleEvent;
-
-    public static event Action EnemyWalkEvent;
-
-    public static void EnemyWaitInIdle()
-    {
-        EnemyWaitInIdleEvent?.Invoke();
-    }
-
-    public static void WalkEnemy()
-    {
-        EnemyWalkEvent?.Invoke();
-    }
-
-    public static void IdleEnemy()
-    {
-        EnemyIdleEvent?.Invoke();
-    }
 
     public static void AttackPerformed()
     {
@@ -55,11 +38,16 @@ public static class EventManager /*: MonoBehaviour*/
     {
         EnemyHitEvent?.Invoke(enemy);
         enemy.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
+        if (enemy.HasZeroHealth())
+        {
+            //death
+            EnemyDeath(enemy);
+        }
     }
 
-    public static void EnemyDeath()
+    public static void EnemyDeath(Hittable enemy)
     {
-        EnemyDeathEvent?.Invoke();
+        EnemyDeathEvent?.Invoke(enemy);
     }
 
     public static void PlayerDeath()
@@ -67,9 +55,10 @@ public static class EventManager /*: MonoBehaviour*/
         PlayerDeathEvent?.Invoke();
     }
 
-    internal static void PlayerTakeHit()
+    internal static void PlayerTakeHit(float damage)
     {
-        PlayerHitEvent?.Invoke();
+        PlayerHitEffectEvent?.Invoke();
+        PlayerHitEvent?.Invoke(damage);
     }
     
     public static void EnemyAttackPerform()

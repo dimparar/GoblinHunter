@@ -24,8 +24,6 @@ public class EnemyAnimationFSM : AnimationStateManager<EnemyAnimationFSM.EnemyAn
         EventManager.EnemyHitEvent += GetHit;
         EventManager.EnemyDeathEvent += ToDeathAnimation;
         EventManager.EnemyAttackEvent += ToAttackAnimation;
-        EventManager.EnemyIdleEvent += ToIdleAnimation;
-        EventManager.EnemyWalkEvent += ToWalkAnimation;
         InitStates();
         CurrentState = States[EnemyAnimation.WALK];
     }
@@ -42,24 +40,18 @@ public class EnemyAnimationFSM : AnimationStateManager<EnemyAnimationFSM.EnemyAn
         }
     }
 
-    public void ToDeathAnimation()
+    public void ToDeathAnimation(Hittable enemy)
     {
-        TransitionToState(EnemyAnimation.TO_DEATH);
-        TerminateFSM = true;
+        if (gameObject.GetComponent<Hittable>() == enemy && !TerminateFSM)
+        {
+            TransitionToState(EnemyAnimation.TO_DEATH);
+            TerminateFSM = true;
+        }
+        
     }
 
     public void ToAttackAnimation()
     {
         TransitionToState(EnemyAnimation.IDLE);
-    }
-
-    public void ToIdleAnimation()
-    {
-        TransitionToState(EnemyAnimation.IDLE);
-    }
-
-    public void ToWalkAnimation()
-    {
-        TransitionToState(EnemyAnimation.WALK);
     }
 }

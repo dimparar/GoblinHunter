@@ -15,6 +15,6 @@ public class Kill : MonoBehaviour
     // Update is called once per frame
     private void Hit()
     {
-        GetComponent<PlayerController>().TakeDamage(damage);
+        //GetComponent<PlayerController>().TakeDamage(damage);
     }
 }

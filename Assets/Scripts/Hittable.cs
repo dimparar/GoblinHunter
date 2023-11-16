@@ -5,6 +5,6 @@ using UnityEngine;
 public interface Hittable
 {
     void TakeDamage(float amount);
-
+    bool HasZeroHealth();
 
 }

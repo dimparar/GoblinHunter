@@ -18,7 +18,6 @@ public class ChaseEnemyState : BaseState<EnemyStateMachine.EnemyState>
         _enemy.Agent.isStopped = false;
         _enemy.Agent.speed = speed;
         // Play The Walk Animation
-        EventManager.WalkEnemy();
     }
 
     public override void ExitState()

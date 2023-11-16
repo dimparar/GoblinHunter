@@ -45,7 +45,6 @@ public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
             // Continue
             nextWaypoint = GenerateRandomPointIn3DSpace(center, walking_radius);
             _enemy.Agent.speed = _walkingSpeed;
-            EventManager.WalkEnemy();
             _enemy.Agent.isStopped = false;
             _enemy._isIdling = false;
             _enemy.Agent.SetDestination(nextWaypoint);
@@ -55,7 +54,6 @@ public class PatrolEnemyState : BaseState<EnemyStateMachine.EnemyState>
             if (Vector3.Distance(_enemy.transform.position, nextWaypoint) < 0.5 && !_enemy._isIdling)
             {
                 _enemy.Agent.speed = 0;
-                EventManager.EnemyWaitInIdle();
             }
         }
     }

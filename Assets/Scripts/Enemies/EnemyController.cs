@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour, Hittable
 {
+
     [SerializeField] private float health = 100;
 
     public float Health { get => health; set => Health = health; }
@@ -29,12 +30,16 @@ public class EnemyController : MonoBehaviour, Hittable
         else
         {
             health = 0;
-            //death
-            EventManager.EnemyDeath();
         }
         Debug.Log("Health After: " + health);
     }
 
+    public bool HasZeroHealth()
+    {
+        return health == 0;
+
+    }
+    
     private void MoveBack()
     {
         gameObject.transform.Translate(100 * Time.deltaTime * GameObject.Find("Main Camera").GetComponent<Transform>().forward, Space.World);

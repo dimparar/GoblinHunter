@@ -26,7 +26,7 @@ public class PlayerUI : MonoBehaviour
     private void OnEnable()
     {
         EventManager.PlayerDeathEvent += ShowDeathScreen;
-        EventManager.PlayerHitEvent += PlayDamageVfx;
+        EventManager.PlayerHitEffectEvent += PlayDamageVfx;
     }
     private void Start()
     {
