@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Weapon\Daggers.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\IdleEnemyState.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\PatrolEnemyState.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerRotateSmooth.cs" />
     <Compile Include="Assets\Scripts\Weapon\Hands.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerRotate.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Scripts\States\StateManager.cs" />
     <Compile Include="Assets\Scripts\Interactables\SwordInteractable.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInteract.cs" />
+    <Compile Include="Assets\Scripts\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\AttackState.cs" />
     <Compile Include="Assets\Scripts\Hittable.cs" />
     <Compile Include="Assets\Scripts\Weapon\Axe.cs" />

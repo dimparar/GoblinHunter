@@ -5,7 +5,6 @@ using System;
 using UnityEngine;
 using UnityEngine.VFX;
 using UnityEngine.Windows;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerController), typeof(PlayerRotate))]
