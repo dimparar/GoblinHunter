@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Left Dagger
   - Right Dagger
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -66,11 +66,13 @@
     <Compile Include="Assets\Scripts\Player\PlayerMovementManager.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStateMachine.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponManager.cs" />
+    <Compile Include="Assets\Scripts\RoomGeneration\RoomBehaviour.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Weapon\Daggers.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\IdleEnemyState.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\PatrolEnemyState.cs" />
+    <Compile Include="Assets\Scripts\RoomGeneration\WallCollision.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerRotateSmooth.cs" />
     <Compile Include="Assets\Scripts\Weapon\Hands.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerRotate.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="Assets\Scripts\Effect\Effects.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\HitState.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
+    <Compile Include="Assets\Scripts\RoomGeneration\DungeonGenerator.cs" />
     <Compile Include="Assets\Scripts\Enemies\Path.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\AttackEnemyState.cs" />
     <Compile Include="Assets\Rendering\OutlineEffect3D.cs" />

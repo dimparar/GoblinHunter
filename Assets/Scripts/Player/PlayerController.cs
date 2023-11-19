@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour, Hittable
     {
         _moveDir.x = input.x;
         _moveDir.z = input.y;
-
+        PlayerMovementManager._isGrounded = true;
         if (PlayerMovementManager._isGrounded)
         {
             if (_moveDir.x == 0 && _moveDir.z == 0)

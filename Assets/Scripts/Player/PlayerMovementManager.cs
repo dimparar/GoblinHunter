@@ -15,6 +15,7 @@ public class PlayerMovementManager : MonoBehaviour
 
      void Update()
     {
+        Debug.Log(_isGrounded);
         timer += Time.deltaTime;
     }
 
