@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     public PlayerInput.OnFootActions _onFoot;
 
     private PlayerController _playerController;
-/*    private PlayerMovementManager _moveManager;*/
     private PlayerRotate _rotate;
     private PlayerRotate _rotateSmooth;
     private PlayerRotate _currentRotate;
@@ -110,7 +109,7 @@ public class Player : MonoBehaviour
     private void AssignInputs()
     {
         _onFoot.Jump.performed += ctx => _playerController.Jump();
-
+        _onFoot.QuickSave.performed += ctx => SaveSystem.Save();
         _onFoot.Run.performed += ctx => PlayerMovementManager._isRunning = true;
         _onFoot.Run.canceled += ctx => PlayerMovementManager._isRunning = false;
 

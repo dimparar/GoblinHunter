@@ -1,0 +1,64 @@
+using System.Collections.Generic;
+using UnityEngine;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System;
+using System.Net.Sockets;
+
+public static class SaveSystem 
+{
+
+    public static List<string> savePaths;
+
+    public static int counter = 0;
+    /// <summary>
+    /// Used To Test the Saving System
+    /// </summary>
+    public static void Save() 
+    {
+        if (savePaths == null)
+        {
+            Debug.Log("No existing saves found");
+            savePaths = new List<string>();
+        }
+        Debug.Log("Saving");
+
+        BinaryFormatter bf = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/playerName" + DateTime.Now.ToString("MM-dd-yyyy HH-mm") + counter+".bin";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        PlayerData data = new PlayerData();
+        counter++;
+        bf.Serialize(stream, data);
+        stream.Close();
+        savePaths.Add(path);
+        SavePaths();
+    }
+    public static void SavePaths() 
+    {
+        if (savePaths == null)
+        {
+            Debug.Log("No existing saves found");
+            savePaths = new List<string>();
+            return;
+        }
+        else
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/saveLocations.bin";
+            FileStream stream = new FileStream(path, FileMode.Create);
+
+            bf.Serialize(stream, savePaths);
+            stream.Close();
+        }
+
+    }
+    public static PlayerData Load()
+    {
+        return null;
+    }
+
+     public static void Initialize(List<string> savePathsList)
+    {
+        savePaths = savePathsList; 
+    }
+}

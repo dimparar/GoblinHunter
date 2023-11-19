@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour, Hittable
     {
         HitEffectEmmiter.transform.position = HittableTransform.position+ new Vector3(0,1,0);
         HitEffect.Stop(); HitEffect.Play();
-        BloodEffectEmmiter.transform.position = HittableTransform.position+ new Vector3(0, 1, 0);
+        BloodEffectEmmiter.transform.position = HittableTransform.position+ new Vector3(0, 0.5f, 0);
         BloodEffectEmmiter.transform.rotation = HittableTransform.rotation;
         BloodEffect.Stop(); BloodEffect.Play();
     }
