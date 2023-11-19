@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
+
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SpriteBillboard.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Interactables\Cube.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\EquipState.cs" />
+    <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\IdleState.cs" />
     <Compile Include="Assets\Scripts\OutllneEffect.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\ChaseEnemyState.cs" />
@@ -122,6 +124,7 @@
     <Compile Include="Assets\Scripts\Goblin\GoblinStates\GoblinDeathState.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimationAspectManager.cs" />
     <Compile Include="Assets\Input\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Dungeon\RoomBehaviour.cs" />
     <Compile Include="Assets\Scripts\Effect\Effects.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinAnimationFSM.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\HitState.cs" />
