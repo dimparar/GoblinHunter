@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
+using Random = UnityEngine.Random;
 
 public class DungeonGenerator : MonoBehaviour
 {
@@ -10,8 +11,6 @@ public class DungeonGenerator : MonoBehaviour
         public bool visited = false;
         public bool[] status = new bool[4];
     }
-    public GameObject room;
-
 
     [System.Serializable]
     public class Rule
@@ -35,6 +34,8 @@ public class DungeonGenerator : MonoBehaviour
         }
 
     }
+    public int seed = 42;
+
     //size of dungeon in 2D
     public Vector2Int size;
 
@@ -57,8 +58,44 @@ public class DungeonGenerator : MonoBehaviour
     //Start is called before the first frame update
     void Start()
     {
-        Random.seed = 42;
+        board = new List<Cell>();
+        corridors = new Dictionary<(int row, int col), bool>();
+
+        //Add all the cells that the algorithm must have
+        for (int i = 0; i < size.x; i++)
+        {
+            for (int j = 0; j < size.y; j++)
+            {
+                board.Add(new Cell());
+            }
+        }
+        //Define the new seed
+        Random.seed = seed;
+
+        //Start the DFS for the 1st time
         MazeGenerator();
+
+        while (board.Exists(cell => !cell.visited))
+        {
+            //Find a second position at random to start the algorithm again
+            List<int> positions = new List<int>();
+            foreach (Cell cell in board)
+            {
+                int pos = board.IndexOf(cell);
+                if (cell.visited && (pos != (board.Count - 1)) && CheckNeighbors(pos).Count != 0)
+                {
+                    positions.Add(pos);
+                }
+            }
+            startPos = positions[Random.Range(0, positions.Count)];
+
+            //Start the DFS for the nth time
+            MazeGenerator();
+        }
+        
+
+        //Generate the dungeon
+        GenerateDungeon();
     }
 
     void GenerateDungeon()
@@ -136,8 +173,7 @@ public class DungeonGenerator : MonoBehaviour
                 var newCorridor = Instantiate(corridor, new Vector3(2 * colStart * offset.x, 0, -Mathf.Abs((rowStart * offset.x * 2) + (rowEnd * offset.x * 2)) / 2), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                 newCorridor.name = "Corridor " + tuple.Item1 + "->" + tuple.Item2;
                 newCorridor.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-                /*                newCorridor.transform.localRotation = Quaternion.Euler(new Vector3Int(0, 90, 0));
-                */
+                
             }
         }
 
@@ -145,32 +181,20 @@ public class DungeonGenerator : MonoBehaviour
 
     void MazeGenerator()
     {
-        board = new List<Cell>();
-        corridors = new Dictionary<(int row, int col), bool>();
-
-        //Add all the cells that the algorithm must have
-        for (int i = 0; i < size.x; i++)
-        {
-            for (int j = 0; j < size.y; j++)
-            {
-                board.Add(new Cell());
-            }
-        }
-
         //Keeps the position that we are now
         int currentCell = startPos;
 
         //Calling path
         Stack<int> path = new Stack<int>();
 
-        /*int k = 0;
+        int k = 0;
 
         //Show us the limit of the dungeon to be sure to exit. we can define it also as while(true)
-        int limit = 1000;*/
+        int limit = 1000;
 
-        while (true)
+        while (k < limit)
         {
-            /*k++;*/
+            k++;
 
             //We are sure that we always check the current node
             board[currentCell].visited = true;
@@ -249,7 +273,6 @@ public class DungeonGenerator : MonoBehaviour
             }
 
         }
-        GenerateDungeon();
     }
 
     List<int> CheckNeighbors(int cell)

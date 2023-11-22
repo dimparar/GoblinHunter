@@ -76,6 +76,7 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+<<<<<<< HEAD
                 },
                 {
                     "name": "Pause",
@@ -130,6 +131,8 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+=======
+>>>>>>> b56369f5bbbc59953d7991b4ea02ea4c3861215e
                 }
             ],
             "bindings": [
@@ -385,6 +388,7 @@
                     "action": "QuickSave",
                     "isComposite": false,
                     "isPartOfComposite": false
+<<<<<<< HEAD
                 },
                 {
                     "name": "",
@@ -451,6 +455,8 @@
                     "action": "EquipMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
+=======
+>>>>>>> b56369f5bbbc59953d7991b4ea02ea4c3861215e
                 }
             ]
         }
