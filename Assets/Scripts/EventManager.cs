@@ -21,6 +21,9 @@ public static class EventManager /*: MonoBehaviour*/
     public static event Action PlayerDeathEvent;
 
     public static event Action EnemyAttackEvent;
+
+    public static event Action TogglePause;
+    public static event Action ToggleEquipMenu;
 /*    public static event Action AttackWaitInAttackEnemy;
 */
 
@@ -66,8 +69,18 @@ public static class EventManager /*: MonoBehaviour*/
         EnemyAttackEvent?.Invoke();
     }
 
-/*    public static void EnemyWaitInAttack()
+    public static void PauseEvent()
     {
-        AttackWaitInAttackEnemy?.Invoke();
-    }*/
+        TogglePause?.Invoke();
+    }
+
+    public static void EquipMenuEvent()
+    {
+        ToggleEquipMenu?.Invoke();
+    }
+
+    /*    public static void EnemyWaitInAttack()
+        {
+            AttackWaitInAttackEnemy?.Invoke();
+        }*/
 }

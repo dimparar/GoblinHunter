@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,8 +17,9 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private VisualEffect healthVFX_0;
     [SerializeField] private Image healthRadialFX;
     [SerializeField] private Image damageRadialFX;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject equipMenu;
     [SerializeField] private GameObject deathScreen;
-    [SerializeField] private GameObject Parent;
 
     private void Awake()
     {
@@ -25,9 +27,32 @@ public class PlayerUI : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.PlayerDeathEvent += ShowDeathScreen;
+        EventManager.PlayerDeathEvent += DeathUI;
         EventManager.PlayerHitEffectEvent += PlayDamageVfx;
+        EventManager.TogglePause += TogglePauseMenu;
+        EventManager.ToggleEquipMenu += ToggleRadialMenu;
     }
+
+    private void ToggleRadialMenu()
+    {
+        if (equipMenu.activeSelf)
+        {
+            equipMenu.SetActive(false);
+            _crosshair.enabled = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            equipMenu.SetActive(true);
+            _crosshair.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+        }
+    }
+
     private void Start()
     {
         /*StopHealthAnimation();*/
@@ -82,11 +107,41 @@ public class PlayerUI : MonoBehaviour
         Invoke("DisableDamageVfx", 1f);
     }
 
+    public void DeathUI() 
+    {
+        _crosshair.enabled = false;
+        Invoke("ShowDeathScreen",2.3f);
+    }
+
     public void ShowDeathScreen() 
     {
-       GameObject deathScreenObject = Instantiate(deathScreen);
-       deathScreenObject.transform.SetParent(Parent.transform);
-       deathScreenObject.transform.localPosition = new Vector3(0, 0, 0);
+        deathScreen.SetActive(true);
     }
+
+    private void TogglePauseMenu() 
+    {
+        if (pauseMenu.activeSelf)
+        {
+            pauseMenu.SetActive(false);
+            healthBar.enabled = true;
+            staminaBar.enabled = true;
+            _crosshair.enabled = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1f;
+        }
+        else
+        { 
+            pauseMenu.SetActive(true);
+            healthBar.enabled = false;
+            staminaBar.enabled = false;
+            _crosshair.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+        }
+
+    }
+
 
 }

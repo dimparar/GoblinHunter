@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
 public enum PlayerWeapon
@@ -49,4 +50,35 @@ public class WeaponManager
         
     }
 
-}
+    public static void ChangeWeapon(int weaponSlot)
+    {
+            var enumerator = weapons.GetEnumerator();
+            int weaponPosition = 1;
+            while (weaponPosition <= weaponSlot)
+            {
+                enumerator.MoveNext();
+                weaponPosition++;
+            }
+
+            Weapon weapon = enumerator.Current.Value;
+            enumerator.Dispose();
+
+        if (weapon != null && weapon!=_currentWeapon)
+        {
+            if (_currentWeapon != null)
+            {
+                /*_changeWeapon = true;*/
+                _previousWeapon = _currentWeapon;
+                _currentWeapon = weapon;
+                EventManager.EquipWeapon();
+            }
+
+
+        }
+
+
+        }
+
+
+    }
+

@@ -31,10 +31,10 @@ public class PlayerInteract : MonoBehaviour
         _player = GetComponent<Player>();
     }
 
-/*    private void Start()
-    {
-        WeaponManager.initWeapons();
-    }*/
+    /*    private void Start()
+        {
+            WeaponManager.initWeapons();
+        }*/
 
     private void checkInteraction()
     {
@@ -51,7 +51,7 @@ public class PlayerInteract : MonoBehaviour
 
                 Debug.DrawRay(ray.origin, ray.direction * rayMaxDistance, Color.red);
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
-                
+
 
                 // 2D object
                 if (interactable.GetComponent<OutlineEffect>() != null)
@@ -126,8 +126,8 @@ public class PlayerInteract : MonoBehaviour
 
                         target = hitInfo.collider.gameObject;
 
-/*                        Hittable hittable = hitInfo.collider.GetComponent<Hittable>();
-                        Transform hittablePos = hitInfo.collider.GetComponent<Transform>();*/
+                        /*                        Hittable hittable = hitInfo.collider.GetComponent<Hittable>();
+                                                Transform hittablePos = hitInfo.collider.GetComponent<Transform>();*/
 
                         // Player UI Update
 
@@ -135,9 +135,10 @@ public class PlayerInteract : MonoBehaviour
                         //hittable.TakeDamage(WeaponManager._currentWeapon.GetWeaponDamage());
 
                         _playerUI.crosshairInteraction();
-/*                        hitTarget = hittable;                        
-                        this.hittablePos = hittablePos;*/
+                        /*                        hitTarget = hittable;                        
+                                                this.hittablePos = hittablePos;*/
                         Invoke("InvokeEnemyHit", WeaponManager._currentWeapon.GetTimeTillHit());
+                        
                     }
                 }
                 else
@@ -148,11 +149,11 @@ public class PlayerInteract : MonoBehaviour
             }
 
         }
-        
+
 
     }
-        
-        
+
+
     void Update()
     {
         // Create raycast & check collisions with interactables
@@ -165,14 +166,14 @@ public class PlayerInteract : MonoBehaviour
 
             //Kane to hdh yparxon _weapon tou trapezioy paidi kai metakinise to 
             //! den exoume ksekatharisei ean to weapon to spawn einai teli
-            
-/*            
-            _player._currentWeapon = PlayerWeapon.SWORD;
-            _player._weapon = GetComponent<Sword>();
-            _player._weapon.transform.SetParent(_weaponHolder.transform);
-            _player._weapon.transform.localPosition = Vector3.zero;
-            _player._weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
-            _player._weapon.transform.localScale = Vector3.one;*/
+
+            /*            
+                        _player._currentWeapon = PlayerWeapon.SWORD;
+                        _player._weapon = GetComponent<Sword>();
+                        _player._weapon.transform.SetParent(_weaponHolder.transform);
+                        _player._weapon.transform.localPosition = Vector3.zero;
+                        _player._weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                        _player._weapon.transform.localScale = Vector3.one;*/
         }
 
 
@@ -180,8 +181,9 @@ public class PlayerInteract : MonoBehaviour
     public void InvokeEnemyHit()
     {
         StartCoroutine(Effects.Flash(target.GetComponentInChildren<SpriteRenderer>(), 0.5f));
-        gameObject.GetComponent<PlayerController>().PlayVFX(target.GetComponent<Transform>());
-        EventManager.EnemyHitPerformed(target.GetComponent<Hittable>());
+        GetComponent<PlayerController>().PlayVFX(target.GetComponent<Transform>());
+        GetComponent<PlayerController>().PlayEquipSound();
+
     }
 
 }

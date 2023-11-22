@@ -11,6 +11,7 @@ public abstract class Weapon
     public AnimationClip EQUIP { get; protected set; }
     public AnimationClip UNEQUIP { get; protected set; }
     public AnimationClip ATTACK { get; protected set; }
+    public AnimationClip DEATH { get; protected set; }
     
     protected float weaponDamage;
 
