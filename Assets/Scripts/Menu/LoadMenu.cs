@@ -62,9 +62,5 @@ public class LoadMenu : MonoBehaviour
     }
 
 
-    public void DeleteSaveSlot(GameObject saveSlot) 
-    {
-
-    }
 
 }

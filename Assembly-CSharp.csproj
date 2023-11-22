@@ -56,10 +56,10 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
-
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SpriteBillboard.cs" />
+    <Compile Include="Assets\Scripts\Menu\EquipMenu.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinStateMachine.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinAnimationStates\GoblinWalkState.cs" />
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
@@ -77,9 +77,11 @@
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Weapon\Daggers.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\IdleEnemyState.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerLogic.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\PatrolEnemyState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerRotateSmooth.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\PlayerData.cs" />
+    <Compile Include="Assets\Scripts\Menu\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Weapon\Hands.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinAnimationStates\GoblinToDeathState.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinAnimationStates\GoblinIdleState.cs" />

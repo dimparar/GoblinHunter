@@ -18,4 +18,8 @@ public class SaveSlot : MonoBehaviour
         SaveSystem.SavePaths();
         LoadMenu.RefreshSaveList.Invoke();
     }
+    public void LoadSlot(TextMeshProUGUI path)
+    {
+        SaveSystem.Load(path.text);
+    }
 }

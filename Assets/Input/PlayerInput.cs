@@ -98,6 +98,60 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""60522a71-9072-4600-a879-03eb1efefbb7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSlot1"",
+                    ""type"": ""Button"",
+                    ""id"": ""4370803b-7983-4b89-9b62-cf9149233324"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSlot2"",
+                    ""type"": ""Button"",
+                    ""id"": ""3b435b53-f99f-4b2e-810d-14fcf74180da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSlot3"",
+                    ""type"": ""Button"",
+                    ""id"": ""2854a9fc-2343-4dc0-b1e9-b519f25adc72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSlot4"",
+                    ""type"": ""Button"",
+                    ""id"": ""b897c382-ab56-452c-a6af-81105140a424"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f776974-b8e4-433a-98ce-d660a417b573"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -353,6 +407,72 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""QuickSave"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0649dec0-2ae0-4c23-8451-fecf9dffddca"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ace7c81-f863-49c4-94e3-244836820069"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSlot1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8900a35d-4c41-4d12-b895-7e99640cf4f7"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSlot2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24d55905-a9b7-407f-9a69-81ef38e55fcf"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSlot3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9d67ac3d-04da-476a-813d-3ed7431d1616"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSlot4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96ff1a54-26ef-45cc-87a5-da9386ef83b1"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -369,6 +489,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_Block = m_OnFoot.FindAction("Block", throwIfNotFound: true);
         m_OnFoot_QuickSave = m_OnFoot.FindAction("QuickSave", throwIfNotFound: true);
+        m_OnFoot_Pause = m_OnFoot.FindAction("Pause", throwIfNotFound: true);
+        m_OnFoot_WeaponSlot1 = m_OnFoot.FindAction("WeaponSlot1", throwIfNotFound: true);
+        m_OnFoot_WeaponSlot2 = m_OnFoot.FindAction("WeaponSlot2", throwIfNotFound: true);
+        m_OnFoot_WeaponSlot3 = m_OnFoot.FindAction("WeaponSlot3", throwIfNotFound: true);
+        m_OnFoot_WeaponSlot4 = m_OnFoot.FindAction("WeaponSlot4", throwIfNotFound: true);
+        m_OnFoot_EquipMenu = m_OnFoot.FindAction("EquipMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -438,6 +564,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_Block;
     private readonly InputAction m_OnFoot_QuickSave;
+    private readonly InputAction m_OnFoot_Pause;
+    private readonly InputAction m_OnFoot_WeaponSlot1;
+    private readonly InputAction m_OnFoot_WeaponSlot2;
+    private readonly InputAction m_OnFoot_WeaponSlot3;
+    private readonly InputAction m_OnFoot_WeaponSlot4;
+    private readonly InputAction m_OnFoot_EquipMenu;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -450,6 +582,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @Block => m_Wrapper.m_OnFoot_Block;
         public InputAction @QuickSave => m_Wrapper.m_OnFoot_QuickSave;
+        public InputAction @Pause => m_Wrapper.m_OnFoot_Pause;
+        public InputAction @WeaponSlot1 => m_Wrapper.m_OnFoot_WeaponSlot1;
+        public InputAction @WeaponSlot2 => m_Wrapper.m_OnFoot_WeaponSlot2;
+        public InputAction @WeaponSlot3 => m_Wrapper.m_OnFoot_WeaponSlot3;
+        public InputAction @WeaponSlot4 => m_Wrapper.m_OnFoot_WeaponSlot4;
+        public InputAction @EquipMenu => m_Wrapper.m_OnFoot_EquipMenu;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -483,6 +621,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @QuickSave.started += instance.OnQuickSave;
             @QuickSave.performed += instance.OnQuickSave;
             @QuickSave.canceled += instance.OnQuickSave;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+            @WeaponSlot1.started += instance.OnWeaponSlot1;
+            @WeaponSlot1.performed += instance.OnWeaponSlot1;
+            @WeaponSlot1.canceled += instance.OnWeaponSlot1;
+            @WeaponSlot2.started += instance.OnWeaponSlot2;
+            @WeaponSlot2.performed += instance.OnWeaponSlot2;
+            @WeaponSlot2.canceled += instance.OnWeaponSlot2;
+            @WeaponSlot3.started += instance.OnWeaponSlot3;
+            @WeaponSlot3.performed += instance.OnWeaponSlot3;
+            @WeaponSlot3.canceled += instance.OnWeaponSlot3;
+            @WeaponSlot4.started += instance.OnWeaponSlot4;
+            @WeaponSlot4.performed += instance.OnWeaponSlot4;
+            @WeaponSlot4.canceled += instance.OnWeaponSlot4;
+            @EquipMenu.started += instance.OnEquipMenu;
+            @EquipMenu.performed += instance.OnEquipMenu;
+            @EquipMenu.canceled += instance.OnEquipMenu;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -511,6 +667,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @QuickSave.started -= instance.OnQuickSave;
             @QuickSave.performed -= instance.OnQuickSave;
             @QuickSave.canceled -= instance.OnQuickSave;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+            @WeaponSlot1.started -= instance.OnWeaponSlot1;
+            @WeaponSlot1.performed -= instance.OnWeaponSlot1;
+            @WeaponSlot1.canceled -= instance.OnWeaponSlot1;
+            @WeaponSlot2.started -= instance.OnWeaponSlot2;
+            @WeaponSlot2.performed -= instance.OnWeaponSlot2;
+            @WeaponSlot2.canceled -= instance.OnWeaponSlot2;
+            @WeaponSlot3.started -= instance.OnWeaponSlot3;
+            @WeaponSlot3.performed -= instance.OnWeaponSlot3;
+            @WeaponSlot3.canceled -= instance.OnWeaponSlot3;
+            @WeaponSlot4.started -= instance.OnWeaponSlot4;
+            @WeaponSlot4.performed -= instance.OnWeaponSlot4;
+            @WeaponSlot4.canceled -= instance.OnWeaponSlot4;
+            @EquipMenu.started -= instance.OnEquipMenu;
+            @EquipMenu.performed -= instance.OnEquipMenu;
+            @EquipMenu.canceled -= instance.OnEquipMenu;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -538,5 +712,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
         void OnQuickSave(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnWeaponSlot1(InputAction.CallbackContext context);
+        void OnWeaponSlot2(InputAction.CallbackContext context);
+        void OnWeaponSlot3(InputAction.CallbackContext context);
+        void OnWeaponSlot4(InputAction.CallbackContext context);
+        void OnEquipMenu(InputAction.CallbackContext context);
     }
 }

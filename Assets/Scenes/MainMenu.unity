@@ -2002,8 +2002,8 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281545633
-  m_fontColor: {r: 0.6320754, g: 0.19975968, b: 0.19975968, a: 1}
-  m_enableVertexGradient: 1
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
@@ -2667,7 +2667,7 @@ MonoBehaviour:
       m_Calls: []
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
-  m_SelectionColor: {r: 0.9433962, g: 0.12904951, b: 0.17684475, a: 0.34901962}
+  m_SelectionColor: {r: 1, g: 1, b: 1, a: 0.5803922}
   m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
