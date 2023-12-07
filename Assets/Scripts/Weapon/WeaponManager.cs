@@ -91,7 +91,8 @@ public class WeaponManager
             //EventManager.EquipWeapon();
             weapons[weapon.getWeapon()] = _currentWeapon;
         }
-        
+        PlayerProfile.UpdateWeapons(weapons,_currentWeapon);
+
     }
 
     public static void ChangeWeapon(int weaponSlot)
@@ -116,13 +117,11 @@ public class WeaponManager
                 _currentWeapon = weapon;
                 EventManager.EquipWeapon();
             }
-
-
         }
 
-
-        }
-
-
+        PlayerProfile.UpdateWeapons(weapons,_currentWeapon);
     }
+
+
+}
 

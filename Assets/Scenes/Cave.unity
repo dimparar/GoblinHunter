@@ -7343,7 +7343,7 @@ GameObject:
   - component: {fileID: 923898429}
   - component: {fileID: 923898428}
   - component: {fileID: 923898430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7398,6 +7398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6823547a26d1f4a84e876e17e46c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetLocation: Forest
 --- !u!1 &926741800
 GameObject:
   m_ObjectHideFlags: 0
@@ -21934,29 +21935,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 5555513789912647946, guid: 183bf20174574684baf3a54db137b13f, type: 3}
-  EnemyPrefab: {fileID: 4064779591154642302, guid: 6530f76c17f9ffa4d97ff8cd864e8f37, type: 3}
-  EnemyCount: 5
-  EnemySpawnPositons:
-  - {x: 48.4, y: 1.3, z: 13.8}
-  - {x: 216.64, y: 1.3, z: -74.83}
-  - {x: 220.07, y: 1.3, z: -79.15}
-  - {x: 225.91, y: 1.3, z: -80.13}
-  - {x: 222.83, y: 1.3, z: -86.93}
-  - {x: 335.2, y: 2, z: -80.6}
-  - {x: 289.53, y: 2, z: 120.72}
-  - {x: 137.33, y: 2, z: 14.12}
-  - {x: 148.3, y: 2, z: 230.6}
-  - {x: 157.4, y: 2, z: 208.2}
-  - {x: 198.6, y: 2, z: 434.11}
-  - {x: 187.58, y: 2, z: 439.37}
-  - {x: 179.33, y: 2, z: 442}
-  - {x: 129.4, y: 2, z: 448}
-  - {x: 129.4, y: 2, z: 448}
-  - {x: 298, y: 2, z: 186}
-  - {x: 273, y: 2, z: 192}
-  - {x: 422, y: 2, z: 59}
-  - {x: 390, y: 2, z: 63}
-  - {x: 44.5, y: 2, z: 145}
+  EnemyPrefabs:
+  - {fileID: 4064779591154642302, guid: 6530f76c17f9ffa4d97ff8cd864e8f37, type: 3}
+  playerSpawn: {x: 0, y: 0, z: 0}
   Terrain: {fileID: 743479987}
 --- !u!1 &1781541757
 GameObject:

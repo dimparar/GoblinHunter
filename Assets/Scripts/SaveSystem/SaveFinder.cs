@@ -15,7 +15,7 @@ public class SaveFinder : MonoBehaviour
             FileStream stream = new FileStream(savesPath, FileMode.Open);
             List<string> paths = bf.Deserialize(stream) as List<string>;
 
-            SaveSystem.Initialize(paths);
+            SaveManager.InitializePaths(paths);
         }
 
     }

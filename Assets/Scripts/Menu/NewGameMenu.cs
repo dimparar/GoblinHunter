@@ -15,7 +15,7 @@ public class NewGameMenu : MonoBehaviour
         string pattern = "^[a-zA-Z0-9]*$";
         if (Regex.IsMatch(text, pattern) && text!=string.Empty)
         {
-            SaveSystem.NewGameSave(text);
+            PlayerProfile.NewGameData(text);
             SceneManager.LoadScene("Forest");
         }
         else 

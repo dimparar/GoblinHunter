@@ -9,12 +9,11 @@ public class AreaChangeInteractable : Interactable
     [SerializeField] string targetLocation;
     public override string GetPromptMessage()
     {
-       return "Press E to Enter"+targetLocation;
+       return "Press E to Enter"+ targetLocation;
     }
 
     public override void Interact()
     {
-        SaveSystem.AreaChangeSave(GameObject.Find("Player").GetComponent<PlayerController>().player);
         SceneManager.LoadScene(targetLocation);
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Prefabs\VFX\Hit\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Scripts\Menu\LoadMenu.cs" />
+    <Compile Include="Assets\Scripts\NewSaveSystem\PlayerProfile.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationFSM.cs" />
     <Compile Include="Assets\Scripts\Interactables\AxeInteractable.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\UnequipState.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\Interactables\AreaChangeInteractable.cs" />
     <Compile Include="Assets\Scripts\Weapon\Hands.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinAnimationStates\GoblinToDeathState.cs" />
+    <Compile Include="Assets\Scripts\NewSaveSystem\AreaData.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinAnimationStates\GoblinIdleState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerRotate.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinController.cs" />
@@ -110,21 +112,23 @@
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\WalkEnemyState.cs" />
     <Compile Include="Assets\Scripts\States\BaseState.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinStates\GoblinAttackLogicState.cs" />
+    <Compile Include="Assets\Scripts\NewSaveSystem\SaveManager.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Interactables\Cube.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\EquipState.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
     <Compile Include="Assets\Scripts\Animation\PlayerStates\IdleState.cs" />
+    <Compile Include="Assets\Scripts\NewSaveSystem\GameData.cs" />
     <Compile Include="Assets\Scripts\OutllneEffect.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStates\ChaseEnemyState.cs" />
     <Compile Include="Assets\Scripts\Kill.cs" />
-    <Compile Include="Assets\Scripts\SaveSystem\SaveSystem.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\SaveFinder.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinStates\GoblinPatrolState.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationFSM.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyAnimationStates\ToDeathEnemyState.cs" />
     <Compile Include="Assets\Scripts\Menu\TestSave.cs" />
     <Compile Include="Assets\Scripts\Animation\BaseAnimationState.cs" />
+    <Compile Include="Assets\Scripts\NewSaveSystem\EnemyData.cs" />
     <Compile Include="Assets\Scripts\Goblin\GoblinStates\GoblinDeathState.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimationAspectManager.cs" />
     <Compile Include="Assets\Input\PlayerInput.cs" />
@@ -417,6 +421,9 @@
     </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.4\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Plugins\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>

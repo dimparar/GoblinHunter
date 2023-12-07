@@ -14,12 +14,12 @@ public class SaveSlot : MonoBehaviour
         {
             File.Delete(path);
         }
-        SaveSystem.savePaths.Remove(path);
-        SaveSystem.StoreSavePaths();
+        SaveManager.GetSaveFilePaths().Remove(path);
+        SaveManager.StoreSavePaths();
         LoadMenu.RefreshSaveList.Invoke();
     }
     public void LoadSlot(TextMeshProUGUI path)
     {
-        SaveSystem.Load(path.text);
+        SaveManager.LoadGame(path.text);
     }
 }

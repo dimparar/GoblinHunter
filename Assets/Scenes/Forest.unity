@@ -621,12 +621,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 5555513789912647946, guid: 183bf20174574684baf3a54db137b13f, type: 3}
-  EnemyPrefab: {fileID: 4064779591154642302, guid: 6530f76c17f9ffa4d97ff8cd864e8f37, type: 3}
+  EnemyPrefabs:
+  - {fileID: 4064779591154642302, guid: 6530f76c17f9ffa4d97ff8cd864e8f37, type: 3}
   playerSpawn: {x: 0, y: 0, z: 0}
-  EnemySpawnPositons:
-  - {x: 7.8, y: 1.5, z: -46}
-  - {x: -12, y: 1.5, z: -46}
-  - {x: 17.2, y: 1.5, z: -46}
   Terrain: {fileID: 750100996}
 --- !u!4 &411663207
 Transform:

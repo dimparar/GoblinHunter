@@ -10,30 +10,39 @@ public class MainMenu : MonoBehaviour
 {
     private void OnEnable()
     {
-        if (SaveSystem.savePaths != null) 
+
+        if (SaveManager.GetSaveFilePaths() == null)
         {
-            if (SaveSystem.savePaths.Count == 0)
-            {
-                GameObject loadButton = GameObject.Find("LoadButton");
-                Color transparentColor = loadButton.GetComponentInChildren<TextMeshProUGUI>().color;
-                transparentColor.a = 0.5f;
-                loadButton.GetComponentInChildren<TextMeshProUGUI>().faceColor = transparentColor;
-                loadButton.GetComponent<Button>().enabled = false;
-                transparentColor = loadButton.GetComponent<Image>().color;
-                transparentColor.a = 0f;
-                loadButton.GetComponent<Image>().color = transparentColor; 
-            }
-            else
-            {
-                GameObject loadButton = GameObject.Find("LoadButton");
-                Color fullColor = loadButton.GetComponentInChildren<TextMeshProUGUI>().color;
-                fullColor.a = 1f;
-                loadButton.GetComponentInChildren<TextMeshProUGUI>().faceColor = fullColor;
-                loadButton.GetComponent<Button>().enabled = true;
-                fullColor = loadButton.GetComponent<Image>().color;
-                fullColor.a = 1f;
-                loadButton.GetComponent<Image>().color = fullColor;
-            }
+            GameObject loadButton = GameObject.Find("LoadButton");
+            Color transparentColor = loadButton.GetComponentInChildren<TextMeshProUGUI>().color;
+            transparentColor.a = 0.5f;
+            loadButton.GetComponentInChildren<TextMeshProUGUI>().faceColor = transparentColor;
+            loadButton.GetComponent<Button>().enabled = false;
+            transparentColor = loadButton.GetComponent<Image>().color;
+            transparentColor.a = 0f;
+            loadButton.GetComponent<Image>().color = transparentColor;
+        }
+        else if (SaveManager.GetSaveFilePaths().Count == 0)
+        {
+            GameObject loadButton = GameObject.Find("LoadButton");
+            Color transparentColor = loadButton.GetComponentInChildren<TextMeshProUGUI>().color;
+            transparentColor.a = 0.5f;
+            loadButton.GetComponentInChildren<TextMeshProUGUI>().faceColor = transparentColor;
+            loadButton.GetComponent<Button>().enabled = false;
+            transparentColor = loadButton.GetComponent<Image>().color;
+            transparentColor.a = 0f;
+            loadButton.GetComponent<Image>().color = transparentColor;
+        }
+        else
+        {
+            GameObject loadButton = GameObject.Find("LoadButton");
+            Color fullColor = loadButton.GetComponentInChildren<TextMeshProUGUI>().color;
+            fullColor.a = 1f;
+            loadButton.GetComponentInChildren<TextMeshProUGUI>().faceColor = fullColor;
+            loadButton.GetComponent<Button>().enabled = true;
+            fullColor = loadButton.GetComponent<Image>().color;
+            fullColor.a = 1f;
+            loadButton.GetComponent<Image>().color = fullColor;
         }
     }
 

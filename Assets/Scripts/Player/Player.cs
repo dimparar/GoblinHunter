@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public bool _instantiateWeapon = false;
     public PlayerWeapon _currentWeapon;
     public bool _changeWeapon = false;
-
+    
     public DefaultInputActions uiInputActions;
     public PlayerInput _playerInput;
     public PlayerInput.OnFootActions _onFoot;
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
         isPaused = false;
         _currentWeapon = PlayerWeapon.HANDS;
 
+        PlayerProfile.UpdateCurrentArea();
 
         uiInputActions = new DefaultInputActions();
         _playerInput = new PlayerInput();
@@ -54,16 +55,11 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        /* WeaponManager.InitWeapons(SaveSystem.currentSave.weapons, SaveSystem.currentSave.currentWeapon*/
+       
         _onFoot.Enable();
-/*        if (SaveSystem.newArea || SaveSystem.currentSave == null)
-        {
-            WeaponManager.InitWeapons();
-        }*/
-/*        else 
-        {*/
-            WeaponManager.InitWeapons(SaveSystem.currentSave.weapons, SaveSystem.currentSave.currentWeapon);
-      /*  }*/
+
+
+        WeaponManager.InitWeapons(PlayerProfile.gameData.playerData.weapons, PlayerProfile.gameData.playerData.currentWeapon);
         EventManager.TogglePause += ChangeInput;
         EventManager.ToggleEquipMenu += ChangeInput;
     }
@@ -89,7 +85,7 @@ public class Player : MonoBehaviour
     {
         _onFoot.Disable();
         _onFoot.Jump.performed -= ctx => _playerController.Jump();
-        _onFoot.QuickSave.performed -= ctx => SaveSystem.Save(_playerController.player, gameObject.transform);
+        _onFoot.QuickSave.performed -= ctx => SaveManager.SaveGame();
         _onFoot.Pause.performed -= ctx => EventManager.PauseEvent();
         _onFoot.EquipMenu.performed -= ctx => EventManager.EquipMenuEvent();
         _onFoot.Run.performed -= ctx => PlayerMovementManager._isRunning = true;
@@ -132,7 +128,7 @@ public class Player : MonoBehaviour
     private void AssignInputs()
     {
         _onFoot.Jump.performed += ctx => _playerController.Jump();
-        _onFoot.QuickSave.performed += ctx => SaveSystem.Save(_playerController.player,gameObject.transform);
+        _onFoot.QuickSave.performed += ctx => SaveManager.SaveGame();
         _onFoot.Pause.performed += ctx => EventManager.PauseEvent();
         _onFoot.EquipMenu.performed += ctx => EventManager.EquipMenuEvent();
         _onFoot.Run.performed += ctx => PlayerMovementManager._isRunning = true;

@@ -57,11 +57,8 @@ public class PlayerController : MonoBehaviour, Hittable
     {
 
         player = new PlayerLogic();
-       
-        if (SaveSystem.currentSave != null) 
-        {
-            player.fillData(SaveSystem.currentSave);
-        }
+        player.health = PlayerProfile.gameData.playerData.health;
+   
 
 
         EventManager.TogglePause += PauseSound;
@@ -137,7 +134,7 @@ public class PlayerController : MonoBehaviour, Hittable
         {
             _velocity.y = -2f;
         }
-
+        PlayerProfile.UpdatePosition(gameObject.transform.position);
     }
 
 
@@ -167,9 +164,11 @@ public class PlayerController : MonoBehaviour, Hittable
         {
             Debug.Log("Health Before: " + player.health);
             player.health -= amount*defense;
+            PlayerProfile.UpdatePlayerHealth(player.health);
         }
         else
         {
+            PlayerProfile.UpdatePlayerHealth(player.health);
             player.health = 0;
             EventManager.PlayerDeath();
         }

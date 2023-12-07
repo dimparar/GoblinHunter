@@ -26,12 +26,14 @@ public class GoblinController : MonoBehaviour, Hittable
         if (health > amount)
         {
             health -= amount;
+            PlayerProfile.EnemyDamaged(this.gameObject.name,health);
         }
         else
         {
             EventManager.EnemyDeath(this.gameObject);
-            /* health = 0;
-            //death*/
+            PlayerProfile.EnemyKilled(this.gameObject.name);
+            PlayerProfile.EnemyKilled(this.gameObject.name);
+            PlayerProfile.IncrementKills();
         }
         Debug.Log("Health After: " + health);
     }
