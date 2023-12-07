@@ -7,15 +7,19 @@ public class Door : Interactable
 {
     private bool _doorOpen = false;
     private bool _interact = false;
+    public string closed = "Closed";
+    public string close = "Close";
+    public string opened = "Opened";
+    public string open = "Open";
 
     // ---------- //
     // Animations //
     // ---------- //
 
-    private int CLOSED = Animator.StringToHash("Closed");
-    private int CLOSE = Animator.StringToHash("Close");
-    private int OPEN = Animator.StringToHash("Open");
-    private int OPENED = Animator.StringToHash("Opened");
+    private int CLOSED;
+    private int CLOSE;
+    private int OPEN;
+    private int OPENED;
     
     private Animator _animator;
 
@@ -28,7 +32,10 @@ public class Door : Interactable
     {
        // _promptMessage = "Press E to open the door";
         _animator = GetComponent<Animator>();
-
+        CLOSED = Animator.StringToHash(closed);
+        CLOSE = Animator.StringToHash(close);
+        OPENED = Animator.StringToHash(opened);
+        OPEN = Animator.StringToHash(open);
     }
     /*
     protected override void Interact()

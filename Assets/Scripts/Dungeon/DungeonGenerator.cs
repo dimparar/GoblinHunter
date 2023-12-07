@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using System.Linq;
+
 using Random = UnityEngine.Random;
 
 public class DungeonGenerator : MonoBehaviour
 {
+
     public class Cell // 0 - North, 1 - South, 2 - East, 3 - West
     {
         public bool visited = false;
         public bool[] status = new bool[4];
+        public bool HasKey = false;
     }
 
     [System.Serializable]
@@ -34,7 +37,17 @@ public class DungeonGenerator : MonoBehaviour
         }
 
     }
-    public int seed = 42;
+
+    public GameObject enemy;
+
+    //Initialize from Data Manager
+    public int seed;
+
+    //Maximum number of enemies per room
+    private int maxNumEnemies = 4;
+
+    //Chest for Key
+    public GameObject chest;
 
     //size of dungeon in 2D
     public Vector2Int size;
@@ -55,11 +68,15 @@ public class DungeonGenerator : MonoBehaviour
     //Our board of dungeon corridors
     Dictionary<(int, int), bool> corridors;
 
+    //Data list for enemies
+    Dictionary<int, int> enemiesPerRoom = new Dictionary<int, int>();
+
     //Start is called before the first frame update
+    [System.Obsolete]
     void Start()
     {
         board = new List<Cell>();
-        corridors = new Dictionary<(int row, int col), bool>();
+        corridors = new Dictionary<(int prevRoom, int nextRoom), bool>();
 
         //Add all the cells that the algorithm must have
         for (int i = 0; i < size.x; i++)
@@ -69,6 +86,7 @@ public class DungeonGenerator : MonoBehaviour
                 board.Add(new Cell());
             }
         }
+
         //Define the new seed
         Random.seed = seed;
 
@@ -92,7 +110,9 @@ public class DungeonGenerator : MonoBehaviour
             //Start the DFS for the nth time
             MazeGenerator();
         }
-        
+
+        //Find the furthest room to add the key
+        board[FindFurthestRoom()].HasKey = true;
 
         //Generate the dungeon
         GenerateDungeon();
@@ -138,12 +158,32 @@ public class DungeonGenerator : MonoBehaviour
                         }
                     }
 
+                    GameObject gameRoom;
+                    RoomBehaviour newRoom;
 
-                    //Instantiate the main rooms
-                    var newRoom = Instantiate(rooms[randomRoom].room, new Vector3(2 * i * offset.x, 0, 2 * -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
+                    if (board[(i + j * size.x)].HasKey)
+                    {
+                        // Chest room has no enemies
+                        gameRoom = Instantiate(chest, new Vector3(2 * i * offset.x, 0, 2 * -j * offset.y), Quaternion.identity, transform);
+                        newRoom = gameRoom.GetComponent<RoomBehaviour>();
+                    }
+                    else
+                    {
+                        gameRoom = Instantiate(rooms[randomRoom].room, new Vector3(2 * i * offset.x, 0, 2 * -j * offset.y), Quaternion.identity, transform);
+                        newRoom = gameRoom.GetComponent<RoomBehaviour>();
+
+                        int numberOfEnemies = Random.Range(1, maxNumEnemies);
+                        enemiesPerRoom.Add((i + j * size.x), numberOfEnemies);
+
+                        if (numberOfEnemies != 0)
+                        {
+                            SpawnEnemies(gameRoom, numberOfEnemies);
+                        }
+                    }
 
                     newRoom.UpdateRoom(currentCell.status);
                     newRoom.name = "Room " + i + "-" + j;
+
 
                 }
             }
@@ -173,7 +213,7 @@ public class DungeonGenerator : MonoBehaviour
                 var newCorridor = Instantiate(corridor, new Vector3(2 * colStart * offset.x, 0, -Mathf.Abs((rowStart * offset.x * 2) + (rowEnd * offset.x * 2)) / 2), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
                 newCorridor.name = "Corridor " + tuple.Item1 + "->" + tuple.Item2;
                 newCorridor.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-                
+
             }
         }
 
@@ -275,6 +315,58 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
+    int FindFurthestRoom()
+    {
+        int currentRoom = 0;
+
+        Dictionary<int, int> rooms = new Dictionary<int, int>();
+        int steps = 0;
+
+        //Calling path
+        Stack<int> path = new Stack<int>();
+
+        //Add the first room as step = 0
+        rooms.Add(currentRoom, steps);
+
+        while (rooms.Count < board.Count)
+        {
+            //Check the other rooms/passages
+            //Find the nextRoom where the value is true for the specified prevRoom and not visited -> not in the rooms dictionary
+            int firstNextRoom = corridors
+                .Where(entry => entry.Key.Item1 == currentRoom && !rooms.ContainsKey(entry.Key.Item2))
+                .Select(entry => entry.Key.Item2).FirstOrDefault();
+
+            if ((firstNextRoom == 0) && !(path.Count == 0))
+            {
+                currentRoom = path.Pop();
+                steps -= 1;
+            }
+            else
+            {
+                path.Push(currentRoom);
+                currentRoom = firstNextRoom;
+                steps += 1;
+
+                //Add the room to the dictionary
+                rooms.Add(currentRoom, steps);
+            }
+        }
+
+        // Remove the last room
+        rooms.Remove(board.Count - 1);
+
+        return rooms.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+    }
+
+    private void SpawnEnemies(GameObject room, int numberOfEnemies)
+    {
+        for (int i = 1; i <= numberOfEnemies; i++)
+        {
+            enemy.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            Instantiate(enemy, room.transform);
+        }
+    }
+
     List<int> CheckNeighbors(int cell)
     {
         List<int> neighbors = new List<int>();
@@ -306,4 +398,3 @@ public class DungeonGenerator : MonoBehaviour
         return neighbors;
     }
 }
-

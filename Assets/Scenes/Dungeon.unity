@@ -270,17 +270,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ee0b2813291284c9b7a47ea445093d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 4064779591154642302, guid: 6530f76c17f9ffa4d97ff8cd864e8f37, type: 3}
   seed: 0
-  size: {x: 6, y: 6}
+  chest: {fileID: 2496566051739496556, guid: 6bea611e5408b3f4c8e85a8ab6b10c8b, type: 3}
+  size: {x: 4, y: 4}
   startPos: 0
   rooms:
-  - room: {fileID: 8197637164398573415, guid: 5d169bc5d189eb34b9168d01bdd454fd, type: 3}
+  - room: {fileID: 6745010234115698429, guid: 0d8c5508129d642448ea14da83797119, type: 3}
+    minPosition: {x: 0, y: 0}
+    maxPosition: {x: 0, y: 0}
+    obligatory: 0
+  - room: {fileID: 6141775024406153885, guid: 70f31c78189451b4b98e25cb7a36c2f8, type: 3}
     minPosition: {x: 0, y: 0}
     maxPosition: {x: 0, y: 0}
     obligatory: 0
   corridorsObjects:
-  - {fileID: 2429566176500957693, guid: 65eda27007e57484196ec1330d87a03c, type: 3}
-  offset: {x: 10, y: 10}
+  - {fileID: 3122460133571711881, guid: 60aa2c52819a2eb4abbf5eb08902e66e, type: 3}
+  offset: {x: 40, y: 40}
 --- !u!4 &180450463
 Transform:
   m_ObjectHideFlags: 0
