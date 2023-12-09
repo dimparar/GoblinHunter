@@ -59,4 +59,14 @@ public static class PlayerProfile
     {
         gameData.playerData.IncrementKills();
     }
+
+    public static void SetCurrentAreaEnemyList(List<EnemyData> enemies)
+    {
+        gameData.SetCurrentAreaEnemyData(enemies);
+    }
+
+    public static void SetCurrentArea(string areaName)
+    {
+       gameData.SetCurrentAreaData(areaName);
+    }
 }

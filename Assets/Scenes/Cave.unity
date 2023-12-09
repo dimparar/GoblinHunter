@@ -21936,7 +21936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 5555513789912647946, guid: 183bf20174574684baf3a54db137b13f, type: 3}
   EnemyPrefabs:
-  - {fileID: 4064779591154642302, guid: 6530f76c17f9ffa4d97ff8cd864e8f37, type: 3}
+  - {fileID: 4064779591154642302, guid: a281a12ed9eadd844a8bde469f4ee3ae, type: 3}
   playerSpawn: {x: 0, y: 0, z: 0}
   Terrain: {fileID: 743479987}
 --- !u!1 &1781541757

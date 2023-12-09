@@ -14,7 +14,7 @@ public class Axe : Weapon
         EQUIP = new AnimationClip(Animator.StringToHash("EquipAxe"), 0.43f);
         UNEQUIP = new AnimationClip(Animator.StringToHash("UnequipAxe"), 0.43f);
         ATTACK = new AnimationClip(Animator.StringToHash("AttackAxe"), 0.94f);
-        DEATH= new AnimationClip(Animator.StringToHash("Death_Axe"), 2.3f);
+        DEATH= new AnimationClip(Animator.StringToHash("Death_Axe"), 1f);
     }
 
     public override PlayerWeapon getWeapon()

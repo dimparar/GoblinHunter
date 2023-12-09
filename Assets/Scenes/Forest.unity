@@ -625,6 +625,7 @@ MonoBehaviour:
   - {fileID: 4064779591154642302, guid: 6530f76c17f9ffa4d97ff8cd864e8f37, type: 3}
   playerSpawn: {x: 0, y: 0, z: 0}
   Terrain: {fileID: 750100996}
+  ProceduralGen: 0
 --- !u!4 &411663207
 Transform:
   m_ObjectHideFlags: 0
@@ -1351,7 +1352,8 @@ GameObject:
   - component: {fileID: 705589022}
   - component: {fileID: 705589021}
   - component: {fileID: 705589020}
-  m_Layer: 10
+  - component: {fileID: 705589024}
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1374,7 +1376,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -1444,6 +1446,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &705589024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705589019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6823547a26d1f4a84e876e17e46c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLocation: Dungeon
 --- !u!1 &750100996
 GameObject:
   m_ObjectHideFlags: 0

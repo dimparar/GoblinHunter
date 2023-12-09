@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
@@ -26,6 +27,15 @@ public class GameData
             }
         }
     /*    Debug.Log("Scene from current area Not Found");*/
+    }
+
+    public void SetCurrentAreaEnemyData(List<EnemyData> enemies)
+    {
+        if (!currentArea.Visited()) 
+        {
+            currentArea.SetEnemies(enemies);
+            currentArea.SetVisited(true);
+        }
     }
 
     public GameData(string playerName)
@@ -69,16 +79,19 @@ public class GameData
 
         areasData[0].SetAreaName("Forest");
         areasData[0].SetPlayerPosition(new Vector3(0,0.5f,0));
-        areasData[0].SetPlayerRotation(new Vector3(90,0,0)); 
+        areasData[0].SetPlayerRotation(new Vector3(90,0,0));
+        areasData[0].SetVisited(false);
 
         areasData[1].SetAreaName("Cave");
         areasData[1].SetPlayerPosition(new Vector3(0, 0, 0));
         areasData[1].SetPlayerRotation(new Vector3(90, 0, 0));
+        areasData[0].SetVisited(false);
 
         areasData[2].SetAreaName("Dungeon");
-        areasData[2].SetPlayerPosition(new Vector3(0, 0.5f, 0));
+        areasData[2].SetPlayerPosition(new Vector3(0, 0, 0));
         areasData[2].SetPlayerRotation(new Vector3(90, 0, 0));
         areasData[2].SetPlayerSeed(1235);
+        areasData[0].SetVisited(false);
 
         currentArea = areasData[0];
     }

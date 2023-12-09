@@ -4,12 +4,13 @@ using UnityEngine;
 using static EnemyStateMachine;
 using UnityEngine.AI;
 using static PlayerAnimationFSM;
+using static EnemyAnimationFSM;
 
 public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
 {
     public enum PlayerAnimation
     {
-        IDLE, EQUIP, UNEQUIP, ATTACK, HIT
+        IDLE, EQUIP, UNEQUIP, ATTACK, HIT, DEATH
     }
 
     void InitStates()
@@ -19,6 +20,7 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
         States.Add(PlayerAnimation.UNEQUIP, new UnequipState());
         States.Add(PlayerAnimation.ATTACK, new AttackState());
         States.Add(PlayerAnimation.HIT, new HitState());
+        States.Add(PlayerAnimation.DEATH, new DeathState());
     }
 
     private void Awake()
@@ -27,6 +29,7 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
         CurrentState = States[PlayerAnimation.IDLE];
         EventManager.AttackEvent += Attack;
         EventManager.EquipWeaponEvent += Equip;
+        EventManager.PlayerDeathEvent += ToDeathAnimation;
 /*        EventManager.PlayerHitEvent += GetHit;*/
     }
     private void OnDisable()
@@ -54,5 +57,15 @@ public class PlayerAnimationFSM : AnimationStateManager<PlayerAnimation>
     private void GetHit() 
     {
         TransitionToState(PlayerAnimation.HIT);
+    }
+
+    public void ToDeathAnimation()
+    {
+        if (!TerminateFSM)
+        {
+            TransitionToState(PlayerAnimation.DEATH);
+            TerminateFSM = true;
+        }
+
     }
 }

@@ -14,7 +14,7 @@ public class Daggers : Weapon
         EQUIP = new AnimationClip(Animator.StringToHash("EquipDaggers"), 0.43f);
         UNEQUIP = new AnimationClip(Animator.StringToHash("UnequipDaggers"), 0.43f);
         ATTACK = new AnimationClip(Animator.StringToHash("AttackDaggers"), 0.684f);
-        DEATH = new AnimationClip(Animator.StringToHash("Death_daggers"), 2.3f);
+        DEATH = new AnimationClip(Animator.StringToHash("Death_daggers"),1f);
     }
 
 

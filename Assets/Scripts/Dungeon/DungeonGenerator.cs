@@ -120,7 +120,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void GenerateDungeon()
     {
-
+        List<EnemyData> enemies= new List<EnemyData>();
         for (int i = 0; i < size.x; i++)
         {
             for (int j = 0; j < size.y; j++)
@@ -172,13 +172,20 @@ public class DungeonGenerator : MonoBehaviour
                         gameRoom = Instantiate(rooms[randomRoom].room, new Vector3(2 * i * offset.x, 0, 2 * -j * offset.y), Quaternion.identity, transform);
                         newRoom = gameRoom.GetComponent<RoomBehaviour>();
 
+                        Vector3 position = gameRoom.transform.position;
+                        
                         int numberOfEnemies = Random.Range(1, maxNumEnemies);
-                        enemiesPerRoom.Add((i + j * size.x), numberOfEnemies);
+                        for (int k = 0; k <= numberOfEnemies; k++) 
+                        {
+                            enemies.Add(new EnemyData("Enemy" + enemies.Count + k, 100, 0, position));
+                        }
+                        /*
+                            enemiesPerRoom.Add((i + j * size.x), numberOfEnemies);
 
                         if (numberOfEnemies != 0)
                         {
                             SpawnEnemies(gameRoom, numberOfEnemies);
-                        }
+                        }*/
                     }
 
                     newRoom.UpdateRoom(currentCell.status);
@@ -188,7 +195,7 @@ public class DungeonGenerator : MonoBehaviour
                 }
             }
         }
-
+        
         foreach (var tuple in corridors.Keys)
         {
             int rowStart = tuple.Item1 / size.x;
@@ -216,7 +223,8 @@ public class DungeonGenerator : MonoBehaviour
 
             }
         }
-
+        PlayerProfile.SetCurrentAreaEnemyList(enemies);
+        GameObject.Find("GameManager").GetComponent<GameRuntimeManager>().Spawn();
     }
 
     void MazeGenerator()

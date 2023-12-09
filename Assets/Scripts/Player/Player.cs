@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public PlayerInput _playerInput;
     public PlayerInput.OnFootActions _onFoot;
     public bool isPaused;
+    public bool isDead;
     private PlayerController _playerController;
     private PlayerRotate _rotate;
     private PlayerRotate _rotateSmooth;
@@ -33,7 +34,11 @@ public class Player : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         isPaused = false;
+        isDead = false;
+       /*
+        
         _currentWeapon = PlayerWeapon.HANDS;
+*/
 
         PlayerProfile.UpdateCurrentArea();
 
@@ -60,8 +65,10 @@ public class Player : MonoBehaviour
 
 
         WeaponManager.InitWeapons(PlayerProfile.gameData.playerData.weapons, PlayerProfile.gameData.playerData.currentWeapon);
+        _currentWeapon = WeaponManager._currentWeaponKey;
         EventManager.TogglePause += ChangeInput;
         EventManager.ToggleEquipMenu += ChangeInput;
+        EventManager.PlayerDeathEvent += TerminateInput;
     }
 
     private void Update()
@@ -101,30 +108,58 @@ public class Player : MonoBehaviour
 
     private void ChangeInput()
     {
+        if (!isDead) 
+        {
+            if (isPaused)
+            {
+                _onFoot.Attack.Enable();
+                _onFoot.Movement.Enable();
+                _onFoot.Interact.Enable();
+                _onFoot.QuickSave.Enable();
+                _onFoot.WeaponSlot1.Enable();
+                _onFoot.WeaponSlot2.Enable();
+                _onFoot.WeaponSlot3.Enable();
+                _onFoot.WeaponSlot4.Enable();
+/*                _onFoot.EquipMenu.Enable();*/
+                DefaultInputActions.UIActions uiActions = uiInputActions.UI;
+                uiActions.Disable();
+            }
+            else
+            {
+                _onFoot.Attack.Disable();
+                _onFoot.Movement.Disable();
+                _onFoot.Interact.Disable();
+                _onFoot.QuickSave.Disable();
+                _onFoot.WeaponSlot1.Disable();
+                _onFoot.WeaponSlot2.Disable();
+                _onFoot.WeaponSlot3.Disable();
+                _onFoot.WeaponSlot4.Disable();
+/*                _onFoot.EquipMenu.Disable();*/
+                DefaultInputActions.UIActions uiActions = uiInputActions.UI;
+                uiActions.Enable();
+            }
+            isPaused = !isPaused;
 
-        if (isPaused) 
-        {
-            _onFoot.Attack.Enable();
-            _onFoot.Movement.Enable();
-            _onFoot.Interact.Enable();
-            _onFoot.QuickSave.Enable();
-            DefaultInputActions.UIActions uiActions = uiInputActions.UI;
-            uiActions.Disable();
         }
-        else
-        {
-            _onFoot.Attack.Disable();
-            _onFoot.Movement.Disable();
-            _onFoot.Interact.Disable();
-            _onFoot.QuickSave.Disable();
-            DefaultInputActions.UIActions uiActions = uiInputActions.UI;
-            uiActions.Enable();
-        }
-        isPaused = !isPaused;
-        
+
     }
+    private void TerminateInput()
+    {
+        isDead = true;
+        _onFoot.Attack.Disable();
+        _onFoot.Movement.Disable();
+        _onFoot.Interact.Disable();
+        _onFoot.QuickSave.Disable();
+        _onFoot.WeaponSlot1.Disable();
+        _onFoot.WeaponSlot2.Disable();
+        _onFoot.WeaponSlot3.Disable();
+        _onFoot.WeaponSlot4.Disable();
+        _onFoot.EquipMenu.Disable();
+        _onFoot.Pause.Disable();
+        DefaultInputActions.UIActions uiActions = uiInputActions.UI;
+        uiActions.Enable();
 
-
+    }
     private void AssignInputs()
     {
         _onFoot.Jump.performed += ctx => _playerController.Jump();

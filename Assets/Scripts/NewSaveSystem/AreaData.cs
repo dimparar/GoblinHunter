@@ -17,6 +17,8 @@ public class AreaData /*: AreaData*/
     private int seed;
     [JsonProperty]
     private List<EnemyData> enemies;
+    [JsonProperty]
+    private bool visited;
 
     public AreaData() 
     {
@@ -45,12 +47,24 @@ public class AreaData /*: AreaData*/
 
     public void SetEnemies(List<EnemyData>enemies)
     {
-        this.enemies = enemies;
+        foreach(EnemyData enemy in enemies) 
+        {
+            this.enemies.Add(enemy);
+        }
     }
 
     public void SetPlayerSeed(int i)
     {
         seed = i;
+    }
+    public void SetVisited(bool b)
+    {
+        visited = b;
+    }
+
+    public bool Visited() 
+    {
+        return visited;
     }
     public string GetAreaName()
     {
