@@ -138,5 +138,5 @@ Here's an overview of the key files and scripts in the project:
 
 ## More info
 
-To find more information about the implementation of the project, you can double click this [link](../GoblinHunter/blob/main/Goblin_Hunter_Report.pdf) to check the report.
+To find more information about the implementation of the project, you can double click this [link](../main/Goblin_Hunter_Report.pdf) to check the report.
 
