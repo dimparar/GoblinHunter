@@ -1,19 +1,39 @@
-## About
+# **Goblin Hunter** 🗡️🎮
 
-This project introduces a First-Person dungeon crawler developed using Unity and C#. In terms of visual aesthetics, the game draws inspiration from the iconic Doom(1993), infusing elements like 8-directional sprites/animations, along with a 2.5D visual style. The game incorporates a variety of technologies with some notable mentions being the procedural map generation, the State Machine design pattern and the Save System. Please note that this project is designed for educational purposes only and not intended for commercial distribution.
+## **Trailer** [<a href="https://youtu.be/1g0OP0_okLE">Youtube</a>]
 
-The game comprises three distinct areas, with the Dungeon being one of them. The Dungeon, featuring procedural generation through a custom Depth First Search algorithm, which guarantees a unique layout for every playthrough. This implementation significantly enhances the replay value of the game, offering players a fresh and distinctive experience with each exploration of the dungeon.
-## Features
 
-- **Dungeon Generator:** Implementation of custom Depth First Search algorithm, to introduce procedural generation of the Dungeon map, along with dynamic placement of enemies & specific items.
-- **Save System:** Serialization of player stats/progress and save to JSON file.
-- **Load Sytem:** Deserialization of saved file and player stats load.
-- **State Machines:** Custom state machine implementation to handle the animation and behaviour of the AIs, in consultation with Unity's framework.
-- **Custom Shaders:** Implementation of custom shaders, using Blender and Unity, to construct a world that is consistent and well thought out.
-- **Terrain:** Utilization of [Unity Terrain Tools](https://assetstore.unity.com/packages/tools/terrain/terrain-tools-64852#releases) for level design.
 
-## Structure
-- Scripts
+https://github.com/user-attachments/assets/c000ef07-b6b8-4247-93f3-429b37013af8
+
+
+
+## **About the Game**
+**Goblin Hunter** is a first-person dungeon crawler developed using Unity and C#, drawing inspiration from classic games like *Doom (1993)*. With a 2.5D visual style and 8-directional sprites, this game offers a nostalgic, yet modern, experience. The core feature of **Goblin Hunter** is the procedural map generation and the camera techniques, making each dungeon exploration unique. The game is designed for educational purposes and not for commercial release.
+
+## **Key Features**
+- **Procedural Dungeon Generation**: Custom Depth First Search algorithm ensures a unique dungeon layout with dynamic enemy and item placements for every playthrough.
+- **State Machines**: AI and player animations are controlled via custom state machines integrated with Unity's framework for smooth behavior transitions.
+- **Save and Load System**: Progress is saved and loaded through JSON serialization, allowing players to pick up where they left off.
+- **Custom Shaders**: Handcrafted shaders built with Unity to maintain a consistent aesthetic.
+- **Terrain Design**: Utilizes [Unity Terrain Tools](https://assetstore.unity.com/packages/tools/terrain/terrain-tools-64852#releases) and Blender for creating immersive level environments.
+- **Multiple Weapons & Interactables**: Equip your player with different weapons like swords, axes, and daggers, while also interacting with keys, doors, and healing items.
+
+## **How to Play**
+1. **Exploring the Dungeon**: Traverse the procedurally generated dungeon and engage in combat with various enemies.
+2. **Combat System**: Choose from a variety of weapons (sword, daggers, axe) and fight enemies using strategic combat moves.
+3. **AI Encounters**: Face enemies with unique AI behaviors powered by state machines.
+4. **Saving & Loading**: Save your progress at any point and load your saved game to continue your adventure.
+
+## **Technologies Used**
+- **Unity**: For overall game development.
+- **C#**: Main programming language for scripting.
+- **Blender**: Used to create 3d models like the cave and others.
+- **Unity Terrain Tools**: For level and environment design like the forest.
+- **JSON Serialization**: Save and load player stats and game state.
+
+## **Project Structure**
+Here's an overview of the key files and scripts in the project:
 ```
 📦Scripts
  ┣ 📂Animation
@@ -111,3 +131,13 @@ The game comprises three distinct areas, with the Dungeon being one of them. The
  ┗ 📜Utils.cs
 
 ```
+
+## Contributors
+* [Dimitris Pararas](https://github.com/dimparar)
+* [Vaggelis Leftakis](https://github.com/vleft02)
+* [Panagiotis Triantafillidis](https://github.com/Panattack)
+
+## More info
+
+To find more information about the implementation of the project, you can double click this [link](../main/Goblin_Hunter_Report.pdf) to check the report.
+
